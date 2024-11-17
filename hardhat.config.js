@@ -1,10 +1,11 @@
 require("@nomicfoundation/hardhat-toolbox");
+require("@nomicfoundation/hardhat-ignition");
 require("dotenv").config();
 
 module.exports = {
    solidity: "0.8.27",
    ignition: {
-      modules: ["./ignition/modules/NFT.js"]
+      modules: ["./ignition/modules/YieldingAndLendingContract.js"]
    },
    networks: {
       sepolia: {
