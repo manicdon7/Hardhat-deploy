@@ -72,7 +72,6 @@ describe("YieldingAndLendingContract", function () {
         const { lock, unlockTime, otherAccount } = await loadFixture(
           deployOneYearLockFixture
         );
-
         // We can increase the time in Hardhat Network
         await time.increaseTo(unlockTime);
 
@@ -99,9 +98,7 @@ describe("YieldingAndLendingContract", function () {
         const { lock, unlockTime, lockedAmount } = await loadFixture(
           deployOneYearLockFixture
         );
-
         await time.increaseTo(unlockTime);
-
         await expect(lock.withdraw())
           .to.emit(lock, "Withdrawal")
           .withArgs(lockedAmount, anyValue); // We accept any value as `when` arg
@@ -113,9 +110,7 @@ describe("YieldingAndLendingContract", function () {
         const { lock, unlockTime, lockedAmount, owner } = await loadFixture(
           deployOneYearLockFixture
         );
-
         await time.increaseTo(unlockTime);
-
         await expect(lock.withdraw()).to.changeEtherBalances(
           [owner, lock],
           [lockedAmount, -lockedAmount]
